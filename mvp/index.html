@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Form</title>
+    <script defer src="formScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- 
+        Fonts
+     --------------------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="form-container">
+      <div class="form-header">
+        <h2>Contact Me</h2>
+        <h3>We are always happy to find out what's on your mind</h3>
+      </div>
+      <form id="contact-form" action="/" method="post">
+        <div class="form-section">
+          <!-- <label for="firstname">First Name</label> -->
+          <input
+            type="text"
+            placeholder="First Name"
+            name="firstname"
+            id="firstname"
+            required
+          />
+          <small class="error" id="name-error">name error</small>
+        </div>
+        <div class="form-section">
+          <!-- <label for="email">E-mail</label> -->
+          <input
+            type="email"
+            placeholder="E-mail"
+            name="email"
+            id="email"
+            required
+          />
+          <small class="error" id="email-error">email error</small>
+        </div>
+        <div class="form-section message-box">
+          <!-- <label for="message">Message Content</label> -->
+          <textarea
+            rows="calc(5vw)"
+            cols="calc(15vw)"
+            name="message"
+            id="message"
+            placeholder="Your message here"
+            required
+          ></textarea>
+          <div class="message-foot clearfix">
+            <small class="error" id="message-error">message error</small>
+            <small class="numchar" id="numchar">120/120</small>
+          </div>
+        </div>
+        <div class="form-section">
+          <button type="submit" id="submit-btn">Send</button>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
