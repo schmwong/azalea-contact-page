@@ -125,6 +125,12 @@ small {
     display: block;
 }
 
+@media (orientation: portrait) {
+    .message-foot {
+        width: 75%;
+    }
+}
+
 #message-error,
 #numchar {
     /* border: 1px solid green; */
