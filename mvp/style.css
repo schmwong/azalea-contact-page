@@ -25,9 +25,9 @@ body {
     border-radius: 12px;
     /* Dimensions
 ----------------------------------------------- */
-    width: 10000vmax;
-    max-width: 90%;
-    height: 10000vmax;
+    width: 80vmax;
+    max-width: 80vw;
+    height: 70vmax;
     max-height: 70vh;
     overflow: hidden;
     /*
@@ -70,6 +70,20 @@ body {
     width: 60%;
     text-align: left;
     display: block;
+}
+
+@media (orientation: portrait) {
+
+    .form-section input,
+    .form-section textarea,
+    .form-section .error,
+    .form-section #submit-btn {
+        width: 80%;
+    }
+
+    .form-section {
+        padding-left: 18%;
+    }
 }
 
 .form-section input,
