@@ -2,7 +2,8 @@ name: angular-deploy
 
 on:
   push:
-    branches: [main/angular]
+    branches: main
+    paths: angular/**
   workflow_dispatch:
   
 jobs:
