@@ -45,11 +45,8 @@ jobs:
 
         - name: Populate new folder
           run: | 
-            mkdir docs
-            cd docs
-            mkdir angular
-            cd ..
-            mv assets *.html *.css *.js *.txt *.png *.ico ./docs/angular
+            mkdir -v -p docs/angular
+            mv {assets,*.html,*.css,*.js,*.txt,*.png,*.ico} ./docs/angular
             
         - name: Commit and push changes to gh-pages branch
           run: |
