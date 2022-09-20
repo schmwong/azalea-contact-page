@@ -39,8 +39,8 @@ jobs:
         - name: Remove old files
           run: |
               DIR=./docs/angular
-              if test -f "$DIR"; then
-                  rm ${DIR}/*
+              if test -d "$DIR"; then
+                  rm -r ${DIR}/*
               fi
 
         - name: Populate new folder
