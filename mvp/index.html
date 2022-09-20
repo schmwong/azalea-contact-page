@@ -17,6 +17,7 @@
       rel="stylesheet"
     />
   </head>
+
   <body>
     <section class="form-container">
       <div class="form-header">
@@ -31,38 +32,43 @@
             placeholder="First Name"
             name="firstname"
             id="firstname"
-            required
           />
-          <small class="error" id="name-error">name error</small>
+          <small class="error" id="name-error">First name required</small>
         </div>
         <div class="form-section">
           <!-- <label for="email">E-mail</label> -->
-          <input
-            type="email"
-            placeholder="E-mail"
-            name="email"
-            id="email"
-            required
-          />
-          <small class="error" id="email-error">email error</small>
+          <input type="email" placeholder="E-mail" name="email" id="email" />
+          <small class="error" id="email-error">E-mail required</small>
         </div>
-        <div class="form-section message-box">
+        <div class="form-section">
           <!-- <label for="message">Message Content</label> -->
           <textarea
             rows="calc(5vw)"
             cols="calc(15vw)"
-            name="message"
-            id="message"
+            name="messagebox"
+            id="messagebox"
+            maxlength="120"
             placeholder="Your message here"
-            required
           ></textarea>
           <div class="message-foot clearfix">
-            <small class="error" id="message-error">message error</small>
-            <small class="numchar" id="numchar">120/120</small>
+            <small class="error" id="message-error"
+              >Message cannot be blank</small
+            >
+            <small class="numchar" id="numchar">
+              <span id="char-count">0</span> /
+              <span id="char-max">120</span>
+            </small>
           </div>
         </div>
         <div class="form-section">
-          <button type="submit" id="submit-btn">Send</button>
+          <button
+            type="submit"
+            id="submit-btn"
+            onSubmit="document.getElementById('submit-btn').disabled=true;"
+            disabled
+          >
+            Send
+          </button>
         </div>
       </form>
     </section>

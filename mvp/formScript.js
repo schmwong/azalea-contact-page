@@ -62,10 +62,12 @@ Calling Validators in Event Listeners
 
 // Event Listeners triggered upon selecting field
 function focusEvent(inputElement) {
-  inputElement.addEventListener("focus", (event) => {
-    event.target.style.borderColor = "goldenrod";
-    toggleButton();
-  });
+  if (inputElement) {
+    inputElement.addEventListener("focus", (event) => {
+      event.target.style.borderColor = "goldenrod";
+      toggleButton();
+    });
+  }
 }
 
 focusEvent(firstName);
@@ -80,27 +82,29 @@ function unfocusEvent(
   error1,
   error2 = ""
 ) {
-  inputElement.addEventListener("blur", (event) => {
-    if (Validator(inputElement) == true) {
-      event.target.style.borderColor = "green";
-      errorElement.innerText = "";
-      errorElement.style.visibility = "hidden";
-      toggleButton();
-    } else if (inputElement.value.trim().length == 0) {
-      event.target.style.borderColor = "red";
-      errorElement.innerText = error1;
-      errorElement.style.visibility = "visible";
-      btn.disabled = true;
-    } else if (Validator(inputElement) == false) {
-      event.target.style.borderColor = "red";
-      errorElement.innerText = error2;
-      errorElement.style.visibility = "visible";
-      btn.disabled = true;
-    } else {
-      event.target.style.borderColor = "green";
-      toggleButton();
-    }
-  });
+  if (inputElement) {
+    inputElement.addEventListener("blur", (event) => {
+      if (Validator(inputElement) == true) {
+        event.target.style.borderColor = "green";
+        errorElement.innerText = "";
+        errorElement.style.visibility = "hidden";
+        toggleButton();
+      } else if (inputElement.value.trim().length == 0) {
+        event.target.style.borderColor = "red";
+        errorElement.innerText = error1;
+        errorElement.style.visibility = "visible";
+        btn.disabled = true;
+      } else if (Validator(inputElement) == false) {
+        event.target.style.borderColor = "red";
+        errorElement.innerText = error2;
+        errorElement.style.visibility = "visible";
+        btn.disabled = true;
+      } else {
+        event.target.style.borderColor = "green";
+        toggleButton();
+      }
+    });
+  }
 }
 
 unfocusEvent(firstName, ValidateName, nameError, nameError1, nameError2);
@@ -108,8 +112,14 @@ unfocusEvent(email, ValidateEmail, emailError, emailError1, emailError2);
 unfocusEvent(message, ValidateMessage, messageError, messageError1);
 
 // Event Listener to display character count in the message field
-message.addEventListener("input", (event) => {
-  let currentCount = message.value.trim().length;
-  let characterCount = document.querySelector("#char-count");
-  characterCount.innerText = currentCount;
-});
+function charCount() {
+  if (message) {
+    message.addEventListener("input", (event) => {
+      let currentCount = message.value.trim().length;
+      let characterCount = document.querySelector("#char-count");
+      characterCount.innerText = currentCount;
+    });
+  }
+}
+
+charCount();
