@@ -49,6 +49,7 @@ jobs:
             mkdir angular
             cd ..
             mv assets *.html *.css *.js *.txt *.png *.ico ./docs/angular
+            rm assets *.html *.css *.js *.txt *.png *.ico
             
         - name: Commit and push changes to gh-pages branch
           run: |
