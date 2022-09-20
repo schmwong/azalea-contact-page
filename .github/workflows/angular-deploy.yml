@@ -35,9 +35,13 @@ jobs:
           with:
             ref: gh-pages
             
-        - name: Remove old folder
-          run: rm -r docs/angular || true
-          
+        - name: Remove old files
+          run: |
+              DIR=./docs/angular
+              if test -f "$DIR"; then
+                  rm ${DIR}/*
+              fi
+
         - name: Populate new folder
           run: |
             mkdir docs/angular
