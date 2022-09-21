@@ -40,7 +40,8 @@ jobs:
           run: |
               DIR=./docs/angular
               if test -d "$DIR"; then
-                  rm -r ${DIR}/*
+                cd "$DIR"
+                rm -r {assets,*.html,*.css,*.js,*.txt,*.png,*.ico}
               fi
 
         - name: Populate new folder
