@@ -4,11 +4,11 @@
 
 		body {
 			background-color: white;
-		    background-image: url(./assets/bg-javascript-logo.png);
-		    background-size: 12vh;
-		    background-position: center top;
-		    background-repeat: no-repeat;
-		    background-attachment: fixed;
+			background-image: url(./assets/bg-javascript-logo.png);
+			background-size: 12vh;
+			background-position: center top;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
 			display: flex;
 			margin: 0;
 			min-height: 100vh;
@@ -21,7 +21,7 @@
 			/* Neumorphism effects 
         ----------------------------------------------- */
 			backdrop-filter: blur(16px) saturate(180%);
-/* 			-webkit-backdrop-filter: blur(16px) saturate(180%); */
+			/* 			-webkit-backdrop-filter: blur(16px) saturate(180%); */
 			background: rgba(255, 255, 255, 0.25);
 			/* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
 			box-shadow: 8px 8px 26px #cbced1, -8px -8px 26px #ffffff;
@@ -31,9 +31,9 @@
 			/* Dimensions
         ----------------------------------------------- */
 			width: 80vw;
-/* 			max-width: 90%; */
+			/* 			max-width: 90%; */
 			height: 75vmax;
-    		max-height: 80vh;
+			max-height: 80vh;
 			overflow: hidden;
 			/*
         ----------------------------------------------- */
@@ -78,12 +78,14 @@
 		}
 
 		@media (orientation: portrait) {
+
 			.form-section input,
 			.form-section textarea,
 			.form-section .error,
 			.form-section #submit-btn {
 				width: 80%;
 			}
+
 			.form-section {
 				padding-left: 18%;
 			}
@@ -101,6 +103,16 @@
 			border-color: white;
 			background-color: #efeeee;
 			box-shadow: inset 3px 3px 3px #cbced1, inset -3px -3px -10px #ffffff;
+		}
+
+		textarea:focus-visible,
+		input:focus-visible {
+			border-color: goldenrod !important;
+		}
+
+		textarea:focus,
+		input:focus {
+			border-color: goldenrod !important;
 		}
 
 		.form-section textarea {
