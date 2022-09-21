@@ -1,0 +1,49 @@
+name: reusable-copy
+
+on:
+  workflow_call:
+  
+      inputs:
+          folder:
+            required: true
+            type: string
+            
+      secrets:
+          WORKFLOW_TOKEN:
+            required: true
+
+
+jobs:
+  clean-and-copy:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+        - name: Checkout gh-pages branch
+          uses: actions/checkout@v3
+          with:
+            ref: gh-pages
+            
+        - name: Remove old files
+          run: |
+              git rm -r {assets,*.html,*.css,*.js,*.txt,*.png,*.ico} || true
+              DIR=docs/${{ inputs.folder }}
+              if test -d $DIR; then
+                git rm -r $DIR*
+              fi
+              
+        - name: Get new files from main and push to gh-pages branch
+          run: |
+              git checkout main -- docs
+              cd docs || true
+              git config user.name "${GITHUB_ACTOR}"
+              git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+              git add ${{ inputs.folder }}
+              timestamp=$(date -u)
+              if ! git diff-index --quiet HEAD; then
+                git commit -m "Auto deployment on push to docs/${{ inputs.folder }} on [${timestamp}]"
+                git push "https://${GITHUB_ACTOR}:${{ secrets.WORKFLOW_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages || exit 0
+              fi
+ 
+ #EOF
+  
