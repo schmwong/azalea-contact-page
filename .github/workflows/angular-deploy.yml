@@ -21,9 +21,8 @@ jobs:
           run: |
               git rm -r {assets,*.html,*.css,*.js,*.txt,*.png,*.ico}
               DIR=docs/angular
-              if test -d "$DIR"; then
-                cd "$DIR"
-                git rm -r $DIR
+              if test -d $DIR; then
+                git rm -r $DIR*
               fi
               
         - name: Commit and push changes to gh-pages branch
@@ -41,6 +40,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    needs: pre-emptive_clean
+    if: needs.pre-emptive_clean.result == 'success'
 
     steps:
     - uses: actions/checkout@v2
@@ -60,7 +61,7 @@ jobs:
     
       runs-on: ubuntu-latest
       needs: build
-      if: needs.pre-emptive_clean.result == 'success' && needs.build.result == 'success'
+      if: needs.build.result == 'success'
       
       steps:
         - name: Checkout gh-pages branch
