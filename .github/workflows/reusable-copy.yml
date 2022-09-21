@@ -56,7 +56,7 @@ jobs:
               pwd
               ls
               echo "Moving ${{ inputs.folder }}"
-              mv ${{ inputs.folder }}/* \
+              mv ${{ inputs.folder }} \
               ../../gh-pages/docs
               
         - name: Commit and push changes to the gh-pages branch
