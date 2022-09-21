@@ -3,7 +3,12 @@ name: angular-copy
 on:
   push:
     branches: main
-    paths: docs/angular/
+    paths:
+        - docs/angular/**.html
+        - docs/angular/**.css
+        - docs/angular/**.js
+        - docs/angular/**.png
+        - docs/angular/**.ico
   workflow_dispatch:
 
  
