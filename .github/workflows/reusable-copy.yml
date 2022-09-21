@@ -23,7 +23,7 @@ jobs:
           uses: actions/checkout@v3
           with:
             ref: gh-pages
-            path: gh-pages
+            path: ./gh-pages
             fetch-depth: 1
             
         - name: Remove old files
@@ -40,12 +40,23 @@ jobs:
           uses: actions/checkout@v3
           with:
             ref: main
-            path: main
+            path: ./main
             fetch-depth: 1
             
         - name: Move new files to gh-pages branch
           run: |
-              cd main/${{ github.event.repository.name }}/docs
+              pwd
+              ls
+              echo "Entering main dir"
+              cd main || true
+              pwd
+              ls
+              cd ${{ github.event.repository.name }} || true
+              pwd
+              ls
+              cd docs
+              pwd
+              ls
               mv ${{ inputs.folder }}/* \
               ../../../gh-pages/${{ github.event.repository.name }}/docs/${{ inputs.folder }}
               
