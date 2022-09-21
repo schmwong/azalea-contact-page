@@ -63,6 +63,11 @@ jobs:
           run: |
               pwd
               cd gh-pages
+              pwd
+              ls
+              cd docs
+              pwd
+              ls
               git config user.name "${GITHUB_ACTOR}"
               git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
               timestamp=$(date -u)
