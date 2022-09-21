@@ -51,14 +51,13 @@ jobs:
               cd main || true
               pwd
               ls
-              cd ${{ github.event.repository.name }} || true
-              pwd
-              ls
+              echo "Entering docs dir"
               cd docs
               pwd
               ls
+              echo "Moving ${{ inputs.folder }}"
               mv ${{ inputs.folder }}/* \
-              ../../../gh-pages/${{ github.event.repository.name }}/docs/${{ inputs.folder }}
+              ../../gh-pages/docs/${{ inputs.folder }}
               
         - name: Commit and push changes to the gh-pages branch
           run: |
