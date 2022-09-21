@@ -1,0 +1,20 @@
+name: angular-copy
+
+on:
+  push:
+    branches: main
+    paths: docs/angular/
+  workflow_dispatch:
+
+ 
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/reusable-copy.yml
+    with:
+      folder: angular
+    secrets:
+      WORKFLOW_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+     
+     
+  #EOF
+  
