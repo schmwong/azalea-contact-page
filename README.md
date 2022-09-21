@@ -1,6 +1,6 @@
 <h1>Validated Contact Form</h1>
 
-<img src="./readme-assets/form-resizing.gif" align="left"/>
+<img src="./readme-assets/form-resizing.gif" align="top"/>
 
 <br>
 
