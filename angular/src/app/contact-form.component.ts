@@ -56,7 +56,7 @@ export class ContactFormComponent {
         const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         let email: string = control.value;
 
-        if (control.touched || control.dirty) {
+        if (!control.pristine || control.touched) {
             if (emailRegex.test(email.trim()) == true ) {
                 return null;
             } else if (control.value == null || email.trim().length == 0) {
@@ -74,7 +74,7 @@ export class ContactFormComponent {
         let msg: string = control.value;
         const m = document.querySelector("#messagebox");
         console.log(m?.classList.contains("ng-touched"));
-        if (m?.classList.contains("ng-touched") || control.touched) { 
+        if (!control.pristine || control.touched) { 
             if (msg.trim().length == 0 && (/[\s\t\n]*/m).test(msg)) {
                 return {0: "Message cannot be blank"}; 
             }
