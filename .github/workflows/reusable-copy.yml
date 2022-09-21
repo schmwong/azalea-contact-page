@@ -35,22 +35,23 @@ jobs:
         - name: Sparse checkout docs/${{ inputs.folder }} folder of the main branch
           run: |
               git clone \
-              -- branch main \
               --depth 1 \
               --filter=blob:none \
               --sparse \
-              https://${GITHUB_ACTOR}:${{ env.WORKFLOW_TOKEN }}@github.com/${GITHUB_REPOSITORY}/docs \
+              https://${GITHUB_ACTOR}:${{ env.WORKFLOW_TOKEN }}@github.com/${GITHUB_REPOSITORY} \
               ;
-              cd docs || true
+              cd ${{ github.event.repository.name }}
               git sparse-checkout init --cone
-              git sparse-checkout set ${{ inputs.folder }}
-              git add ${{ inputs.folder }}
+              git sparse-checkout set docs/${{ inputs.folder }}/*
+              cd docs
+              mv ${{ inputs.folder }} ../../docs/${{ inputs.folder }}
               
         - name: Commit and push changes to the gh-pages branch
           run: |
               git config user.name "${GITHUB_ACTOR}"
               git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
               timestamp=$(date -u)
+              git add ${{ inputs.folder }}
               if ! git diff-index --quiet HEAD; then
                 git commit -m "Auto deployment on push to docs/${{ inputs.folder }} on [${timestamp}]"
                 git push "https://${GITHUB_ACTOR}:${{ secrets.WORKFLOW_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages || exit 0
