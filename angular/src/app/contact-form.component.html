@@ -1,7 +1,6 @@
 <style>
-  textarea:focus,
-  input:focus {
-    border-color: goldenrod !important;
+  :host ::ng-deep #firstname input ::ng-touched ::ng-invalid {
+    border-color: red !important;
   }
 </style>
 
@@ -25,7 +24,7 @@
         placeholder="First Name"
         id="firstname"
         [style.border-color]="
-          !firstName.pristine && firstName.getError('0') == null
+          firstName.touched && firstName.getError('0') == null
             ? 'green'
             : firstName.getError('0').length > 0
             ? 'red'

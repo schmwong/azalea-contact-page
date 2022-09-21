@@ -5,3 +5,7 @@ body {
   background-image: url(./assets/bg-angular-logo.png);
   background-size: 15vh;
 }
+
+.form-section input .ng-touched .ng-invalid {
+  border-color: red;
+}
