@@ -1,0 +1,20 @@
+name: vanilla-copy
+
+on:
+  push:
+    branches: main
+    paths: docs/mvp/
+  workflow_dispatch:
+
+ 
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/reusable-copy.yml
+    with:
+      folder: mvp
+    secrets:
+      WORKFLOW_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+     
+     
+  #EOF
+  
