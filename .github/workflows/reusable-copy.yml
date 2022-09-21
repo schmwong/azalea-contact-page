@@ -23,27 +23,64 @@ jobs:
           uses: actions/checkout@v3
           with:
             ref: gh-pages
+            path: ./gh-pages
+            fetch-depth: 1
             
         - name: Remove old files
           run: |
+              cd gh-pages || true
+              cd ${{ github.event.repository.name }} || true
               git rm -r {assets,*.html,*.css,*.js,*.txt,*.png,*.ico} || true
               DIR=docs/${{ inputs.folder }}
               if test -d $DIR; then
                 git rm -r $DIR*
               fi
               
-        - name: Get new files from main and push to gh-pages branch
+        - name: Checkout main branch
+          uses: actions/checkout@v3
+          with:
+            ref: main
+            path: ./main
+            fetch-depth: 1
+            
+        - name: Move new files to gh-pages branch
           run: |
-              git checkout main -- docs
-              cd docs || true
+              pwd
+              ls
+              echo "Entering main dir"
+              cd main || true
+              pwd
+              ls
+              echo "Entering docs dir"
+              cd docs
+              pwd
+              ls
+              echo "Moving ${{ inputs.folder }}"
+              mv ${{ inputs.folder }} \
+              ../../gh-pages/docs
+              
+        - name: Commit and push changes to the gh-pages branch
+          run: |
+              pwd
+              cd gh-pages
+              pwd
+              ls
+              cd docs
+              pwd
+              ls
               git config user.name "${GITHUB_ACTOR}"
               git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-              git add ${{ inputs.folder }}
               timestamp=$(date -u)
+              git add ${{ inputs.folder }}
               if ! git diff-index --quiet HEAD; then
                 git commit -m "Auto deployment on push to docs/${{ inputs.folder }} on [${timestamp}]"
                 git push "https://${GITHUB_ACTOR}:${{ secrets.WORKFLOW_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages || exit 0
               fi
  
- #EOF
+
+
+
+#EOF
+
+
   
