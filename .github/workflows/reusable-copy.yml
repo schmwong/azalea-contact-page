@@ -58,9 +58,11 @@ jobs:
               echo "Moving ${{ inputs.folder }}"
               mv ${{ inputs.folder }}/* \
               ../../gh-pages/docs
+              cd ../../gh-pages/docs
               
         - name: Commit and push changes to the gh-pages branch
           run: |
+              pwd
               git config user.name "${GITHUB_ACTOR}"
               git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
               timestamp=$(date -u)
