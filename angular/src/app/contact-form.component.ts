@@ -36,7 +36,7 @@ export class ContactFormComponent {
         const nameRegex: RegExp = /^['0-9\p{L}\p{M}]+([^\s\t\n])*['0-9\p{L}\p{M}]*$/ug;
         let name: string = control.value;
 
-        if (!control.pristine) {
+        if (!control.untouched) {
             if ( nameRegex.test(name.trim()) == true ) {
                 return null;
             } else if ( name.trim().length == 0 ) {
@@ -73,8 +73,8 @@ export class ContactFormComponent {
     private ValidateMessage(control: FormControl): ValidationErrors | null {
         let msg: string = control.value;
         const m = document.querySelector("#messagebox");
-        console.log(m?.classList.contains("ng-touched"));
-        if (!control.pristine || control.touched) { 
+        console.log(`ValidateMsg: ${m?.classList.contains("ng-touched")}, ${control.touched}`);
+        if (!control.pristine) { 
             if (msg.trim().length == 0 && (/[\s\t\n]*/m).test(msg)) {
                 return {0: "Message cannot be blank"}; 
             }
