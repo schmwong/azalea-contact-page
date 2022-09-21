@@ -40,7 +40,7 @@ jobs:
               --depth 1 \
               --filter=blob:none \
               --sparse \
-              "https://${GITHUB_ACTOR}:${{ secrets.WORKFLOW_TOKEN }}@github.com/${GITHUB_REPOSITORY}" \
+              https://${GITHUB_ACTOR}@github.com/${GITHUB_REPOSITORY} \
               ;
               cd ${{ github.event.repository.name }}
               git sparse-checkout init --cone
