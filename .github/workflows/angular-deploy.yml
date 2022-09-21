@@ -19,7 +19,7 @@ jobs:
             
         - name: Remove old files
           run: |
-              git rm -r {assets,*.html,*.css,*.js,*.txt,*.png,*.ico}
+              git rm -r {assets,*.html,*.css,*.js,*.txt,*.png,*.ico} || true
               DIR=docs/angular
               if test -d $DIR; then
                 git rm -r $DIR*
