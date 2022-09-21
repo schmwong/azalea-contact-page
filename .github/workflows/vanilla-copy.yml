@@ -3,7 +3,12 @@ name: vanilla-copy
 on:
   push:
     branches: main
-    paths: docs/mvp/
+    paths: 
+        - docs/mvp/**.html
+        - docs/mvp/**.css
+        - docs/mvp/**.js
+        - docs/mvp/**.png
+        - docs/mvp/**.ico
   workflow_dispatch:
 
  
