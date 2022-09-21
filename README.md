@@ -25,6 +25,21 @@
 </ul>
 
 
+<table>
+  <thead align="center">
+    <tr>
+      <th>"All Red"</th>
+      <th>Partially valid</th>
+      <th>"All Green"</th>
+    </tr>
+  </thead>
+  <tr align="center">
+    <td><img src="./readme-assets/form-all-red.png" height=360px/></td>
+    <td><img src="./readme-assets/form-partial.png" height=360px/></td>
+    <td><img src="./readme-assets/form-all-green.png" height=360px/></td>
+  </tr>
+</table>
+
 <hr>
 
 <h2>Main Files Worked On</h2>
