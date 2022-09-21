@@ -1,5 +1,9 @@
 <h1>Validated Contact Form</h1>
 
+<img src="./readme-assets/form-resizing.gif" align="left"/>
+
+<br>
+
 <h2>TL;DR</h2>
 
 <h3>Criteria</h3>
@@ -10,7 +14,6 @@
   <li>red indication for incorrect entries, send button inactive until all fields correctly filled</li>
   <li>final product to be on the Angular framework</li>
 </ul>
-
 <h3>Solution</h3>
 
 <ul>
@@ -176,6 +179,5 @@
   <s><li>Automated deployment workflows</li></s>
   <li>Browser automation for form submission testing, to use Python Selenium where feasible</li>
 </ol>
-
 
 
