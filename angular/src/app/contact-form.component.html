@@ -25,19 +25,16 @@
         placeholder="First Name"
         id="firstname"
         [style.border-color]="
-          !this.contactForm.controls['firstName'].pristine &&
-          this.contactForm.controls['firstName'].getError('0') == null
+          !firstName.pristine && firstName.getError('0') == null
             ? 'green'
-            : this.contactForm.controls['firstName'].getError('0').length > 0
+            : firstName.getError('0').length > 0
             ? 'red'
             : 'white'
         "
       />
       <small
         [style.visibility]="
-          this.contactForm.controls['firstName'].status == 'INVALID'
-            ? 'visible'
-            : 'hidden'
+          firstName.status == 'INVALID' ? 'visible' : 'hidden'
         "
         class="error"
         name="name-error"
@@ -60,11 +57,7 @@
         "
       />
       <small
-        [style.visibility]="
-          this.contactForm.controls['email'].status == 'INVALID'
-            ? 'visible'
-            : 'hidden'
-        "
+        [style.visibility]="email.status == 'INVALID' ? 'visible' : 'hidden'"
         class="error"
         name="email-error"
         id="email-error"
@@ -80,7 +73,7 @@
         maxlength="120"
         placeholder="Your message here"
         [style.border-color]="
-          message.touched && message.getError('0') == null
+          !message.pristine && message.getError('0') == null
             ? 'green'
             : message.touched && message.getError('0').length > 0
             ? 'red'
