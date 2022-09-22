@@ -49,11 +49,11 @@
 <table>
   <thead align="center">
     <tr>
-      <th>Vanilla</th>
-      <th>Angular</th>
+      <th width=50%>Vanilla</th>
+      <th width=50%>Angular</th>
     </tr>
   </thead>
-  <tbody align="center">
+  <tbody align="center" valign="top">
     <tr>
     	<td>
         <a href="https://github.com/schmwong/azalea-contact-page/tree/main/docs/mvp">
@@ -73,7 +73,7 @@
         <a href="https://github.com/schmwong/azalea-contact-page/blob/main/docs/mvp/index.html">
           <b>index.html</b>
         </a>
-				<ul align="left">
+	<ul align="left">
           <li>
             Initial foundation upon which the 
             minimum viable product was first built.
