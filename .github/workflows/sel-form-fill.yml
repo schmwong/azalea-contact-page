@@ -1,0 +1,30 @@
+name: Form Filler Bot
+
+on: [workflow_dispatch]
+
+jobs:
+  fill-forms:
+      runs-on: ubuntu-latest
+      
+      steps:
+          - name: Checkout repository
+            uses: actions/checkout@v3
+            
+          - name: Setup Python
+            uses: actions/setup-python@v4.2.0
+            with:
+              python-version: 3.9
+              
+          - name: Install Selenium
+            run: pip install selenium
+            
+          - name: Run Python script
+            working-directory: ./bots/sel-form-filler/
+            run: python form-fill.py
+
+
+
+
+#EOF
+              
+            
